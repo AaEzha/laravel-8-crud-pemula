@@ -25,7 +25,11 @@
                 <td>{{ Str::words($book->sinopsis, 5) }}</td>
                 <td>
                     <a class="btn btn-primary btn-sm mb-1" href="{{ route('book.edit', $book->getKey()) }}" role="button">ubah</a>
-                    <a class="btn btn-danger btn-sm" href="#" role="button">hapus</a>
+                    <form action="{{ route('book.destroy', $book->getKey()) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger btn-sm" href="#" type="submit">hapus</button>
+                    </form>
                 </td>
             </tr>
             @endforeach
