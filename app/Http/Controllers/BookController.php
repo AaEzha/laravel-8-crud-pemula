@@ -65,7 +65,10 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('books.update', [
+            'title' => 'Ubah Data Buku',
+            'book' => $book
+        ]);
     }
 
     /**
@@ -77,7 +80,9 @@ class BookController extends Controller
      */
     public function update(UpdateBookRequest $request, Book $book)
     {
-        //
+        $book->update($request->all());
+
+        return redirect()->route('book.index');
     }
 
     /**
