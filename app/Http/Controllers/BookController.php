@@ -17,7 +17,7 @@ class BookController extends Controller
     {
         return view('books.index', [
             'title' => 'Daftar Buku',
-            'books' => Book::paginate(8)
+            'books' => Book::latest()->paginate(8)
         ]);
     }
 
@@ -28,7 +28,9 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('books.create', [
+            'title' => 'Tambah Buku'
+        ]);
     }
 
     /**
@@ -39,7 +41,9 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        //
+        Book::create($request->all());
+
+        return redirect()->route('book.index');
     }
 
     /**

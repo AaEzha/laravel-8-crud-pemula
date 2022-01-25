@@ -1,6 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
+    <div class="mb-3">
+        <a class="btn btn-primary" href="{{ route('book.create') }}" role="button">Tambah Buku</a>
+    </div>
     <table class="table table-bordered">
         <thead>
             <tr>
